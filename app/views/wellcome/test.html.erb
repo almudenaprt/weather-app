@@ -1,0 +1,26 @@
+<div class = "row">
+  <div class = "col-md-6 col-md-offset-3">
+    <div class = "well">
+      <h1>¡Bienvenido a <%= @location %>!</h1>
+      <div class = "row">
+        <div class = "col-md-7">
+          <p><em>¿Cuál es el tiempo?</em></p>
+          <p>
+              La temperatura es de: <%= @temp_c %>° C / <%= @temp_f %>° F
+          </p>
+          <p>
+              La sensación térmica es de: <%= @real_feel %>° C
+          </p>
+        </div>    
+        <div class = "col-md-5">
+            <p>
+            <%= @weather_words%> <%= image_tag @weather_icon%> 
+            </p>
+            <p>
+            <%=link_to "Full Forecast", @forecast_link, target: "_blank" %>
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>
