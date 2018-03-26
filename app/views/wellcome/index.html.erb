@@ -1,2 +1,52 @@
-<h1>Wellcome#index</h1>
-<p>Find me in app/views/wellcome/index.html.erb</p>
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        <div class="well">
+	    <h1>Échale un vistazo al tiempo en tu ciudad</h1>
+	    <p>¿Cuál es el tiempo en tu ciudad?</p>
+	    <div>
+                <%= form_tag index_path do %>
+		    <%= text_field_tag :city, nil, placeholder: "Ciudad", class: "form-control" %><br />
+		    <%= submit_tag "Comprobar el tiempo", class: "btn btn-primary" %>
+		<% end %>
+	    </div>
+	</div>
+    </div>
+</div>
+
+<!-- La respuesta de la API de wunderground -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+
+<!-- Añade la variable de instancias de tu controlador para que ésta se muestre en tu página index. -->
+<!-- Asegúrate de que @location no esté vacía ni 'nil', y que la API no te devuelva un error -->
+<% if @location != nil && @location != "" && (@error == "" || @error == nil) %>
+      <h1>La predicción para <%= @location %></h1>
+
+      <div class="row">
+        <div class="col-md-7">
+	  <p><em>¿Cuál es el tiempo?</em></p>
+          <p>
+	    La temperatura es de: <%= @temp_c %>° / <%= @temp_f %>°  
+	  </p>
+	  <p>
+	    La sensación térmica es de: <%= @real_feel_f %>°
+    	  </p>
+        </div>
+        <div class="col-md-5">
+	  <p>
+	    <%= @weather_words %> <%= image_tag @weather_icon %>
+	  </p>
+	  <p>
+	    <%= link_to "Full Forecast", @forecast_link, target: "_blank" %>
+	  </p>
+        </div>
+      </div>
+
+     <% else %>
+     
+     <p>Error: Por favor, introduce una petición válida. <%= @error %> </p> 
+<% end %>
+    </div>
+  </div>
+</div>

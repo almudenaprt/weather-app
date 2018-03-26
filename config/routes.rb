@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'wellcome/index'
+  root 'wellcome#index'
+  
+  get 'index' => 'wellcome#index'
+  post 'index' => 'wellcome#index'
 
-  get 'wellcome/test'
+  get 'test' => 'wellcome#test'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
